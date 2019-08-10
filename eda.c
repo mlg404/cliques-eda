@@ -62,7 +62,7 @@ void main(){
 		} else {
 			num = (rand() % m);
 			printf("\nnumero: %d\n",num);
-			for (i = 0; i < k; i++){ //ARRUMAR ISSO, N TÁ PEGANDO
+			for (i = 0; i < k; i++){
 				if (vet[i] != num){
 					vet[k] = num;
 				} else {
