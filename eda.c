@@ -19,7 +19,7 @@ void main(){
 	int matriz[m][m];
 
 	/*
-	
+
 	###### Preenche a matriz com o grafo ###### 
 	######     do arquivo Grafo.txt      ###### 
 	######    Lê-se linha por linha,     ###### 
@@ -46,10 +46,32 @@ void main(){
 		printf("\n");
 	}
 
+	// ###### Seleciona números aleatoriamente ###### 
 	srand(time(0)); 
-	int num,k;
-	for (k = 0; k < 20; k++){
-		num = (rand() % m);
-		printf("%d - ", num); 
-	}	
+	int num,k,l,vet[3];
+	// for (k = 0; k < m; k++){
+	// 	num = (rand() % m);
+	// 	printf("%d - ", num); 
+	// }	
+
+	for (k = 0; k < 3; k++){
+		printf("k fora: %d\n",k);
+		if (k == 0){
+			vet[k] = (rand() % m);
+		} else {
+			num = (rand() % m);
+			printf("\nnumero: %d\n",num);
+			l = k;
+			for (i = 0; i < l; i++){ //ARRUMAR ISSO, N TÁ PEGANDO
+				if (vet[i] == num){
+					k--;
+				}
+			}
+			vet[k] = (rand() % m);
+			printf("k dentro: %d\n",k);
+		}
+	}
+	for (k = 0; k < 3; k++){
+		printf("%d ", vet[k]);
+	}
 }
