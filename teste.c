@@ -10,7 +10,6 @@ void main(){
     for (i = 0; i < m; i++){
         for (j = 0; j < m; j++){
             fscanf(entrada, "%d", &aux);
-           // printf("\n\n%d\n\n", aux);
             if (i != j){
                 a[i][j]= aux;
             } else {

@@ -1,7 +1,7 @@
 #include <stdio.h>
 void main(){
 	FILE *entrada;
-	int m,n,i,j;
+	int m,n,i,j,aux;
 
 	// ###### Recebe o arquivo com o grafo ###### 
 	entrada = fopen("Grafo.txt","r");
@@ -16,13 +16,18 @@ void main(){
 
 	// ###### Armazena os valores de vértices e arestas em 'm' e 'n' ###### 
 	fscanf(entrada, "%d %d", &m, &n);
-	int matriz[m][m], aux[m];
+	int matriz[m][m];
 
 	for (i = 0; i < m; i++){
-		for (j = 0; j < m; j++)		{
-			matriz[i][j]
-		}
-	}
+        for (j = 0; j < m; j++){
+            fscanf(entrada, "%d", &aux);
+            if (i != j){
+                matriz[i][j]= aux;
+            } else {
+                matriz[i][j] = 0;
+            }
+        }
+    }
 
 	// ###### Fecha o arquivo e exibe a matriz ###### 
 	fclose(entrada);
