@@ -58,16 +58,18 @@ void main(){
 		printf("k fora: %d\n",k);
 		if (k == 0){
 			vet[k] = (rand() % m);
+			printf("\n%d\n", vet[k]);
 		} else {
 			num = (rand() % m);
 			printf("\nnumero: %d\n",num);
-			l = k;
-			for (i = 0; i < l; i++){ //ARRUMAR ISSO, N TÁ PEGANDO
-				if (vet[i] == num){
-					k--;
+			for (i = 0; i < k; i++){ //ARRUMAR ISSO, N TÁ PEGANDO
+				if (vet[i] != num){
+					vet[k] = num;
+				} else {
+					i--;	
+					num = (rand() % m);				
 				}
 			}
-			vet[k] = (rand() % m);
 			printf("k dentro: %d\n",k);
 		}
 	}
