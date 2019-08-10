@@ -18,6 +18,14 @@ void main(){
 	fscanf(entrada, "%d %d", &m, &n);
 	int matriz[m][m];
 
+	/*
+	
+	###### Preenche a matriz com o grafo ###### 
+	######     do arquivo Grafo.txt      ###### 
+	######    Lê-se linha por linha,     ###### 
+	######     inteiro por inteiro       ###### 
+
+	*/
 	for (i = 0; i < m; i++){
         for (j = 0; j < m; j++){
             fscanf(entrada, "%d", &aux);
