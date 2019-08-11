@@ -46,34 +46,49 @@ void main(){
 		printf("\n");
 	}
 
-	// ###### Seleciona números aleatoriamente ###### 
 	srand(time(0)); 
-	int num,k,l,vet[3];
-	// for (k = 0; k < m; k++){
-	// 	num = (rand() % m);
-	// 	printf("%d - ", num); 
-	// }	
-
+	int num,k,l,vet[3],pos;
+	vet[0] = -1;
+	vet[1] = -1;
+	vet[2] = -1;
+	/*
+	###### Pega vértices aleatórios ###### 
+	######  Em k < 3 é selecionado  ###### 
+	######   o tamanho da clique    ###### 
+	*/
 	for (k = 0; k < 3; k++){
-		printf("k fora: %d\n",k);
 		if (k == 0){
 			vet[k] = (rand() % m);
-			printf("\n%d\n", vet[k]);
+			printf("\n%d ", vet[0]);
 		} else {
 			num = (rand() % m);
-			printf("\nnumero: %d\n",num);
-			for (i = 0; i < k; i++){
-				if (vet[i] != num){
-					vet[k] = num;
-				} else {
-					i--;	
-					num = (rand() % m);				
+			printf("%d ", num);
+			for (i = 0; i < 3; i++){
+				if (vet[i] == num){	
+					printf(" eh igual ");
+					num = (rand() % m);	
+					printf("\n novo num %d", num);
+					i--;
 				}
 			}
-			printf("k dentro: %d\n",k);
+			printf("\n num inserido %d\n", num);
+			vet[k] = num;
 		}
 	}
 	for (k = 0; k < 3; k++){
 		printf("%d ", vet[k]);
 	}
+
+
+	for (i=0;i<3;i++){
+		pos = vet[i];
+		for(j=0;j<3;j++){
+			if (pos == j){ } else {
+				if (matriz[pos][j] == 0){
+					return 0;
+				}
+			}
+		}
+	}
+	
 }
