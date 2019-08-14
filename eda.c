@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-void main(){
+int main(){
 	FILE *entrada;
 	int m,n,i,j,aux;
 
@@ -13,6 +13,7 @@ void main(){
 	*/
 	if (entrada == NULL){
 		printf("Arquivo vazio ou nao encontrado");
+		return 0;
 	}
 
 	// ###### Armazena os valores de vértices e arestas em 'm' e 'n' ###### 
@@ -62,9 +63,7 @@ void main(){
 			printf("Tamanho da clique nao pode ser menor que 0");
 		}
 	}while(k>=m || k<1);	
-	int vet[k];
-	
-	// ###### gera vertices aleatorios #######
+	int vet[k],achou2 = 0,q;
 	
 	
 
@@ -73,15 +72,12 @@ void main(){
 	do{
 		achou=0;
 		conta=0;
-		printf("1 - Tentar clique 3\n");
-		printf("2 - Tentar 10\n");
-		printf("3 - Tentar 100\n");
-		printf("4 - Tentar 1000\n");
-		printf("5 - Usar magia negra (1000000 vezes)\n");
-		printf("6 - Assumir que não tem clique e desistir\n");
+		printf("1 - Tentar clique\n");
+		printf("1 - Tentar 100\n");
 		printf("Informe um numero: ");
 		scanf("%d", &codigo);
 		switch (codigo){
+			/* caso 1 */
 			case 1 : 
 				while(conta < k) {
 					int num = (rand() % m - 1) + 1;
@@ -118,7 +114,59 @@ void main(){
 					}
 					if(v==1)printf("\nEsses vertices formam uma clique!\n\n");
 					else printf("\nEsses vertices nao formam uma clique\n\n");
-				}						
+				}	
+			break;
+			/* fim caso 1 */
+			
+			/* CASO DOOOOOOOOOOOOOIS */
+			case 2:
+				conta=0;
+				for (q = 0; q < 10; q++){
+					while(conta < k) {
+						int num = (rand() % m - 1) + 1;
+						int achou = 0;
+						for (i = 0; i < k; i++) {
+							if(vet[i] ==num) {
+								achou = 1;
+								break;
+							}
+						}
+						if(!achou) {
+							vet[conta] = num;
+							conta++;
+						}
+					}
+					printf("\nVertices escolhidos: ");
+					for (i = 0; i < k; i++){
+						printf("%d ", vet[i]);
+					}
+					if(k==1){
+						achou2 = 1;
+					}else if(k==2){
+						if(matriz[vet[0]][vet[1]]==1){
+							achou2 = 1;
+						}
+					}else{
+						for(i=0;i<k;i++){
+							for(j=0;j<k;j++){
+								if(matriz[vet[i]][vet[j]] == 1 && vet[i]!=vet[j])v=1;
+								else if (matriz[vet[i]][vet[j]] == 0 && vet[i]!=vet[j]){
+									v=0;
+									break;
+								}
+							}
+						}
+						if(v==1){
+							achou2 = 1;
+						}
+					}
+					if (achou2){
+						printf("\nEsses vertices formam uma clique!");
+						break;
+					}
+				}
+			break;	
+			/* fim caso 2 */				
 		}		
 	} while (codigo != 6);
 	
