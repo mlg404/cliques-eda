@@ -76,39 +76,10 @@ void main(){
 		printf("%d ", vet[k]);
 	}
 
-
-	/*
-	###### Pega vértices aleatórios ###### 
-	######  Em k < 3 é selecionado  ###### 
-	######   o tamanho da clique -------------- TÁ ERRADO---------  ###### 
-	*/
-	// for (k = 0; k < 3; k++){
-	// 	if (k == 0){
-	// 		vet[k] = (rand() % m);
-	// 		printf("\n%d ", vet[0]);
-	// 	} else {
-	// 		num = (rand() % m);
-	// 		printf("%d ", num);
-	// 		for (i = 0; i < 3; i++){
-	// 			if (vet[i] == num){	
-	// 				printf(" eh igual ");
-	// 				num = (rand() % m);	
-	// 				printf("\n novo num %d", num);
-	// 				i--;
-	// 			}
-	// 		}
-	// 		printf("\n num inserido %d\n", num);
-	// 		vet[k] = num;
-	// 	}
-	// }
-	// for (k = 0; k < 3; k++){
-	// 	printf("%d ", vet[k]);
-	// }
-	
 	int codigo;
 	do{
 		system("cls");
-		printf("1 - Tente outro\n");
+		printf("1 - Tentar 1\n");
 		printf("2 - Tentar 10\n");
 		printf("3 - Tentar 100\n");
 		printf("4 - Tentar 1000\n");
@@ -117,7 +88,9 @@ void main(){
 		printf("Informe um numero: ");
 		scanf("%d", &codigo);
 		switch (codigo){
-			case 1 : cadastrar(&lista); break;
+			case 1 : 
+				cadastrar(&lista);
+			break;
 			case 2 : pesquisar(&lista); break;
 			case 3 : alterar(&lista); break;
 			case 4 : excluir(&lista); break;
