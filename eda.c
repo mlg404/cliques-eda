@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 void main(){
 	FILE *entrada;
 	int m,n,i,j,aux;
@@ -47,32 +48,28 @@ void main(){
 	}
 
 	srand(time(0)); 
-	int num,k,l,vet[3],pos;
-	vet[0] = -1;
-	vet[1] = -1;
-	vet[2] = -1;
+	int num,k,l,vet[5],achou=0,conta=0,pos;
+
+
 	/*
 	###### Pega vértices aleatórios ###### 
-	######  Em k < 3 é selecionado  ###### 
-	######   o tamanho da clique    ###### 
+	######  Em conta < 3 é selecionado  ###### 
+	######   o tamanho da clique   ###### 
 	*/
-	for (k = 0; k < 3; k++){
-		if (k == 0){
-			vet[k] = (rand() % m);
-			printf("\n%d ", vet[0]);
-		} else {
-			num = (rand() % m);
-			printf("%d ", num);
-			for (i = 0; i < 3; i++){
-				if (vet[i] == num){	
-					printf(" eh igual ");
-					num = (rand() % m);	
-					printf("\n novo num %d", num);
-					i--;
-				}
+	while(conta < 3) {
+		int num = (rand() % m);
+		int achou = 0;
+
+		for (i = 0; i < 3; i++) {
+			if(vet[i] ==num) {
+				achou = 1;
+				break;
 			}
-			printf("\n num inserido %d\n", num);
-			vet[k] = num;
+		}
+
+		if(!achou) {
+			vet[conta] = num;
+			conta++;
 		}
 	}
 	for (k = 0; k < 3; k++){
@@ -80,12 +77,61 @@ void main(){
 	}
 
 
+	/*
+	###### Pega vértices aleatórios ###### 
+	######  Em k < 3 é selecionado  ###### 
+	######   o tamanho da clique -------------- TÁ ERRADO---------  ###### 
+	*/
+	// for (k = 0; k < 3; k++){
+	// 	if (k == 0){
+	// 		vet[k] = (rand() % m);
+	// 		printf("\n%d ", vet[0]);
+	// 	} else {
+	// 		num = (rand() % m);
+	// 		printf("%d ", num);
+	// 		for (i = 0; i < 3; i++){
+	// 			if (vet[i] == num){	
+	// 				printf(" eh igual ");
+	// 				num = (rand() % m);	
+	// 				printf("\n novo num %d", num);
+	// 				i--;
+	// 			}
+	// 		}
+	// 		printf("\n num inserido %d\n", num);
+	// 		vet[k] = num;
+	// 	}
+	// }
+	// for (k = 0; k < 3; k++){
+	// 	printf("%d ", vet[k]);
+	// }
+	
+	int codigo;
+	do{
+		system("cls");
+		printf("1 - Tente outro\n");
+		printf("2 - Tentar 10\n");
+		printf("3 - Tentar 100\n");
+		printf("4 - Tentar 1000\n");
+		printf("5 - Usar magia negra (1000000 vezes)\n");
+		printf("6 - Assumir que não tem clique e desistir\n");
+		printf("Informe um numero: ");
+		scanf("%d", &codigo);
+		switch (codigo){
+			case 1 : cadastrar(&lista); break;
+			case 2 : pesquisar(&lista); break;
+			case 3 : alterar(&lista); break;
+			case 4 : excluir(&lista); break;
+			case 5 : exibir(&lista); break;
+		}		
+	} while (codigo != 6);
+	
+	
 	for (i=0;i<3;i++){
 		pos = vet[i];
 		for(j=0;j<3;j++){
 			if (pos == j){ } else {
 				if (matriz[pos][j] == 0){
-					return 0;
+					
 				}
 			}
 		}
