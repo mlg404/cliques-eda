@@ -48,14 +48,15 @@ void main(){
 	}
 
 	srand(time(0)); 
-	int num,k,l,vet[5],achou=0,conta=0,pos;
-
+	int num,k,l,achou,conta,pos;
+	
 
 	/*
 	###### Pega vértices aleatórios ###### 
 	######  Em conta < 3 é selecionado  ###### 
 	######   o tamanho da clique   ###### 
 	*/
+/*
 	while(conta < 3) {
 		int num = (rand() % m);
 		int achou = 0;
@@ -76,10 +77,15 @@ void main(){
 		printf("%d ", vet[k]);
 	}
 
-	int codigo;
+
+*/
+
+system("cls");
+	int codigo, vet[50], v;
 	do{
-		system("cls");
-		printf("1 - Tentar 1\n");
+		achou=0;
+		conta=0;
+		printf("1 - Tentar clique 3\n");
 		printf("2 - Tentar 10\n");
 		printf("3 - Tentar 100\n");
 		printf("4 - Tentar 1000\n");
@@ -89,25 +95,62 @@ void main(){
 		scanf("%d", &codigo);
 		switch (codigo){
 			case 1 : 
-				cadastrar(&lista);
+				while(conta < 3) {
+					int num = (rand() % m);
+					int achou = 0;
+					for (i = 0; i < 3; i++) {
+						if(vet[i] ==num) {
+							achou = 1;
+							break;
+						}
+					}
+
+					if(!achou) {
+						vet[conta] = num;
+						conta++;
+					}
+				}
+				printf("\nVertices escolhidos: ");
+				for (k = 0; k < 3; k++){
+					printf("%d ", vet[k]);
+				}
+				for (i = 0; i < 3; i++){
+					for (j = 0; j < 3; j++){
+						if(matriz[vet[i]][vet[j]] == 1 && vet[i]!=vet[j]){
+							v=1;
+						}	
+                        else if (matriz[vet[i]][vet[j]] == 0 && vet[i]!=vet[j]){
+                            v=0;
+                            break;
+                        }
+                    }
+                }
+                if(v==1){
+					printf("\nEsses vertices formam uma clique!\n\n");
+				} else {
+					printf("\nEsses vertices nao formam uma clique\n\n");
+				}
+				
+					// if (matriz[vet[0]][vet[1]] == 1 && matriz[vet[0]][vet[2]] == 1 && matriz[vet[1]][vet[2]] == 1){
+					// 	printf("\nEsses vertices formam uma clique!\n\n");
+					// } else{
+					// 	printf("\nEsses vertices nao formam uma clique\n\n");
+					// }
+				
 			break;
-			case 2 : pesquisar(&lista); break;
-			case 3 : alterar(&lista); break;
-			case 4 : excluir(&lista); break;
-			case 5 : exibir(&lista); break;
 		}		
 	} while (codigo != 6);
 	
 	
-	for (i=0;i<3;i++){
-		pos = vet[i];
-		for(j=0;j<3;j++){
-			if (pos == j){ } else {
-				if (matriz[pos][j] == 0){
+	// for (i=0;i<3;i++){
+	// 	pos = vet[i];
+	// 	for(j=0;j<3;j++){
+	// 		if (pos == j){ } else {
+	// 			if (matriz[pos][j] == 0){
 					
-				}
-			}
-		}
-	}
+	// 			}
+	// 		}
+	// 	}
+	// }
 	
 }
