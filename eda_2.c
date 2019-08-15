@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void encontraClique(int **matriz, int k, int m){
-	int num,achou,conta,pos, i, vet[k], j, v;
+	int num,achou=0,conta=0,pos, i, vet[k], j, v;
 	while(conta < k) {
 		int num = (rand() % m - 1) + 1;
 		int achou = 0;
@@ -120,8 +120,6 @@ int main(){
 	system("clear");
 	int codigo, v;
 	do{
-		achou=0;
-		conta=0;
 		printf("\n1 - Tentar clique\n");
 		printf("2 - Fechar\n");
 		printf("Informe um numero: ");
