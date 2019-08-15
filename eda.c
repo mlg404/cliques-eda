@@ -49,7 +49,7 @@ int main(){
 	}
 
 	srand(time(0)); 
-	int num,k,l,achou,conta,pos;
+	int num,k,achou,conta;
 	
 	do{
 		printf("\n\nDigite o tamanho K da clique que deseja encontrar: ");
@@ -63,22 +63,17 @@ int main(){
 			printf("Tamanho da clique nao pode ser menor que 0");
 		}
 	}while(k>=m || k<1);	
-	int vet[k],achou2 = 0,q;
-	
-	
-
-	system("cls");
-	int codigo, v;
+	int vet[k],codigo, v;
 	do{
 		achou=0;
 		conta=0;
-		printf("1 - Tentar clique\n");
-		printf("1 - Tentar 100\n");
+		printf("1 - Procurar Clique\n");
+		printf("2 - Fechar\n");
 		printf("Informe um numero: ");
 		scanf("%d", &codigo);
 		switch (codigo){
-			/* caso 1 */
 			case 1 : 
+			system("clear");
 				while(conta < k) {
 					int num = (rand() % m - 1) + 1;
 					int achou = 0;
@@ -93,15 +88,18 @@ int main(){
 						conta++;
 					}
 				}
-				printf("\nVertices escolhidos: ");
+				printf("\nVertice(s) escolhido(s): ");
 				for (i = 0; i < k; i++){
 					printf("%d ", vet[i]);
 				}
 				if(k==1){
-					printf("\nEsse vertice forma uma clique!");
+					printf("\nEsse vertice forma uma clique!\n");
 				}else if(k==2){
-					if(matriz[vet[0]][vet[1]]==1)printf("\nEsses vertices formam uma clique!");
-					else printf("\nEsses vertices nao formam uma clique!");
+					if(matriz[vet[0]][vet[1]]==1){
+						printf("\nEsses vertices formam uma clique!\n");
+					} else {
+						printf("\nEsses vertices nao formam uma clique!\n");
+					}
 				}else{
 					for(i=0;i<k;i++){
 						for(j=0;j<k;j++){
@@ -112,63 +110,16 @@ int main(){
 							}
 						}
 					}
-					if(v==1)printf("\nEsses vertices formam uma clique!\n\n");
-					else printf("\nEsses vertices nao formam uma clique\n\n");
+					if(v==1){
+						printf("\nEsses vertices formam uma clique!\n\n");
+					} else {
+						printf("\nEsses vertices nao formam uma clique\n\n");
+					}
 				}	
-			break;
-			/* fim caso 1 */
-			
-			/* CASO DOOOOOOOOOOOOOIS */
-			case 2:
-				conta=0;
-				for (q = 0; q < 10; q++){
-					while(conta < k) {
-						int num = (rand() % m - 1) + 1;
-						int achou = 0;
-						for (i = 0; i < k; i++) {
-							if(vet[i] ==num) {
-								achou = 1;
-								break;
-							}
-						}
-						if(!achou) {
-							vet[conta] = num;
-							conta++;
-						}
-					}
-					printf("\nVertices escolhidos: ");
-					for (i = 0; i < k; i++){
-						printf("%d ", vet[i]);
-					}
-					if(k==1){
-						achou2 = 1;
-					}else if(k==2){
-						if(matriz[vet[0]][vet[1]]==1){
-							achou2 = 1;
-						}
-					}else{
-						for(i=0;i<k;i++){
-							for(j=0;j<k;j++){
-								if(matriz[vet[i]][vet[j]] == 1 && vet[i]!=vet[j])v=1;
-								else if (matriz[vet[i]][vet[j]] == 0 && vet[i]!=vet[j]){
-									v=0;
-									break;
-								}
-							}
-						}
-						if(v==1){
-							achou2 = 1;
-						}
-					}
-					if (achou2){
-						printf("\nEsses vertices formam uma clique!");
-						break;
-					}
-				}
 			break;	
-			/* fim caso 2 */				
 		}		
-	} while (codigo != 6);
+	} while (codigo != 2);
 	
 	
 }
+
