@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-void encontraClique(int **matriz, int k, int m){
-	srand((unsigned)time(NULL)); 
+int encontraClique(int **matriz, int k, int m){
+	 
 	int num,achou,conta=0,i,vet[k],j,v;
 	while(conta < k) {
 		int num = (rand() % m -1) + 1;
@@ -19,10 +19,7 @@ void encontraClique(int **matriz, int k, int m){
 			conta++;
 		}
 	}
-	printf("\nVertice(s) escolhido(s): ");
-	for (i = 0; i < k; i++){
-		printf("%d ", vet[i]);
-	}
+	
 	if(k==1){
 		printf("\nEsse vertice forma uma clique!");
 	}else if(k==2){
@@ -39,8 +36,13 @@ void encontraClique(int **matriz, int k, int m){
 			}
 			if(v==0)break;
 		}
-		if(v==1)printf("\nEsses vertices formam uma clique!\n\n");
-		else printf("\nEsses vertices nao formam uma clique\n\n");
+		if(v==1){
+			printf("\nVertice(s) escolhido(s): ");
+			for (i = 0; i < k; i++){
+				printf("%d ", vet[i]);
+			}
+		return 1;
+		}
 	}	
 }
 
@@ -124,8 +126,9 @@ int main(){
 		switch (codigo){
 			/* caso 1 */
 			case 1 : 
-				system("clear");
-				encontraClique(matriz, k, m);
+				for (i=0; i<100000; i++){
+					encontraClique(matriz, k, m);
+				}
 			break;
 			/* fim caso 1 */				
 		}		
