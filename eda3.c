@@ -52,14 +52,14 @@ int main(){
 
 	/* 
 	###### Verifica se ele consegue ler o arquivo ###### 
-	######     e se o arquivo nÃ£o estÃ¡ vazio      ######
+	######     e se o arquivo não está vazio      ######
 	*/
 	if (entrada == NULL){
 		printf("Arquivo vazio ou nao encontrado");
 		return 0;
 	}
 
-	// ###### Armazena os valores de vÃ©rtices e arestas em 'm' e 'n' ###### 
+	// ###### Armazena os valores de vértices e arestas em 'm' e 'n' ###### 
 	fscanf(entrada, "%d %d", &m, &n);
 	matriz= (int**)malloc(sizeof(int*)*m);
    
@@ -71,7 +71,7 @@ int main(){
 
 	###### Preenche a matriz com o grafo ###### 
 	######     do arquivo Grafo.txt      ###### 
-	######    LÃª-se linha por linha,     ###### 
+	######    Lê-se linha por linha,     ###### 
 	######     inteiro por inteiro       ###### 
 
 	*/
