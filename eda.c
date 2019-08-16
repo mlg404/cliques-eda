@@ -113,7 +113,7 @@ int main(){
 	
 	
 
-	system("cls");
+	system("clear");
 	int codigo, v;
 	do{
 		printf("\n1 - Tentar clique\n");
@@ -123,6 +123,7 @@ int main(){
 		switch (codigo){
 			/* caso 1 */
 			case 1 : 
+				system("clear");
 				encontraClique(matriz, k, m);
 			break;
 			/* fim caso 1 */				
