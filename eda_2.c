@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void encontraClique(int **matriz, int k, int m){
-	int num,achou=0,conta=0,pos, i, vet[k], j, v;
+	int num,l,achou,conta,pos, i, vet[k], j, v;
 	while(conta < k) {
 		int num = (rand() % m - 1) + 1;
 		int achou = 0;
@@ -17,18 +17,15 @@ void encontraClique(int **matriz, int k, int m){
 			conta++;
 		}
 	}
-	printf("\nVertice(s) escolhido(s): ");
+	printf("\nVertices escolhidos: ");
 	for (i = 0; i < k; i++){
 		printf("%d ", vet[i]);
 	}
 	if(k==1){
-		printf("\nEsse vertice forma uma clique!\n");
+		printf("\nEsse vertice forma uma clique!");
 	}else if(k==2){
-		if(matriz[vet[0]][vet[1]]==1){
-			printf("\nEsses vertices formam uma clique!\n");
-		} else {
-			printf("\nEsses vertices nao formam uma clique!\n");
-		}
+		if(matriz[vet[0]][vet[1]]==1)printf("\nEsses vertices formam uma clique!");
+		else printf("\nEsses vertices nao formam uma clique!");
 	}else{
 		for(i=0;i<k;i++){
 			for(j=0;j<k;j++){
@@ -38,13 +35,11 @@ void encontraClique(int **matriz, int k, int m){
 					break;
 				}
 			}
+			if(v==0)break;
 		}
-		if(v==1){
-			printf("\nEsses vertices formam uma clique!\n\n");
-		} else {
-			printf("\nEsses vertices nao formam uma clique\n\n");
-		}
-	}
+		if(v==1)printf("\nEsses vertices formam uma clique!\n\n");
+		else printf("\nEsses vertices nao formam uma clique\n\n");
+	}	
 }
 
 int main(){
@@ -56,14 +51,14 @@ int main(){
 
 	/* 
 	###### Verifica se ele consegue ler o arquivo ###### 
-	######     e se o arquivo n�o est� vazio      ######
+	######     e se o arquivo não está vazio      ######
 	*/
 	if (entrada == NULL){
 		printf("Arquivo vazio ou nao encontrado");
 		return 0;
 	}
 
-	// ###### Armazena os valores de v�rtices e arestas em 'm' e 'n' ###### 
+	// ###### Armazena os valores de vértices e arestas em 'm' e 'n' ###### 
 	fscanf(entrada, "%d %d", &m, &n);
 	matriz= (int**)malloc(sizeof(int*)*m);
    
@@ -75,7 +70,7 @@ int main(){
 
 	###### Preenche a matriz com o grafo ###### 
 	######     do arquivo Grafo.txt      ###### 
-	######    L�-se linha por linha,     ###### 
+	######    Lê-se linha por linha,     ###### 
 	######     inteiro por inteiro       ###### 
 
 	*/
@@ -100,7 +95,7 @@ int main(){
 	}
 
 	srand(time(0)); 
-	int num,k,achou;
+	int k,l,achou,conta,pos;
 	
 	do{
 		printf("\n\nDigite o tamanho K da clique que deseja encontrar: ");
@@ -114,12 +109,15 @@ int main(){
 			printf("Tamanho da clique nao pode ser menor que 0");
 		}
 	}while(k>=m || k<1);	
+	int achou2 = 0,q;
 	
 	
 
-	system("clear");
+	system("cls");
 	int codigo, v;
 	do{
+		achou=0;
+		conta=0;
 		printf("\n1 - Tentar clique\n");
 		printf("2 - Fechar\n");
 		printf("Informe um numero: ");
@@ -131,5 +129,7 @@ int main(){
 			break;
 			/* fim caso 1 */				
 		}		
-	} while (codigo != 2);	
+	} while (codigo != 2);
+	
+	
 }
