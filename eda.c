@@ -3,9 +3,10 @@
 #include <time.h>
 
 void encontraClique(int **matriz, int k, int m){
-	int num,achou=0,conta=0,i,vet[k],j,v;
+	srand((unsigned)time(NULL)); 
+	int num,achou,conta=0,i,vet[k],j,v;
 	while(conta < k) {
-		int num = (rand() % m - 1) + 1;
+		int num = (rand() % m -1) + 1;
 		int achou = 0;
 		for (i = 0; i < k; i++) {
 			if(vet[i] ==num) {
@@ -95,7 +96,7 @@ int main(){
 		printf("\n");
 	}
 
-	srand((unsigned)time(NULL)); 
+	srand(time(0)); 
 	int k;
 	
 	do{
